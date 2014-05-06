@@ -57,5 +57,5 @@ That's all !!!
 2. Android Proguard support
 3. NDK debug support
 
-you can fork this template at my Github.
+You can fork this template at [My Github](https://github.com/myourys/cocos2d-x-3-android-template).
 	
