@@ -36,15 +36,19 @@ That's all !!!
 ### Features:
 
 1. No errors on Editor
+   
     `closed eclipse Code Analysis's error option`
  
 2. Perfect Indexer!
+
     `Add two symbols at Eclipse's c++ General settings`
    
 3. Auto find cpp files
+
     `Android.mk can auto find cpp files at Classes directory,(Windows can install cygwin to support find function)`
 
 4. Add libcocos2d as a link directory
+    
     `you need not to add libcocos2d any more.`
     
 ### To do List
