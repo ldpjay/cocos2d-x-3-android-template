@@ -6,24 +6,35 @@ LOCAL_MODULE := cocos2dcpp_shared
 
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
-# 遍历目录及子目录的函数
-define walk
-    $(wildcard $(1)) $(foreach e, $(wildcard $(1)/*), $(call walk, $(e)))
+MY_FILES_PATH  :=  $(LOCAL_PATH) \
+                   $(LOCAL_PATH)/../../Classes
+
+MY_FILES_SUFFIX := %.cpp %.c
+
+# Make does not offer a recursive wildcard function, so here's one:
+rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
+
+# Retrieve all source files in each dir recursively.
+MY_ALL_FILES := $(foreach src_path,$(MY_FILES_PATH), $(call rwildcard,$(src_path),*.*) ) 
+MY_ALL_FILES := $(MY_ALL_FILES:$(MY_CPP_PATH)/./%=$(MY_CPP_PATH)%)
+MY_SRC_LIST  := $(filter $(MY_FILES_SUFFIX),$(MY_ALL_FILES)) 
+MY_SRC_LIST  := $(MY_SRC_LIST:$(LOCAL_PATH)/%=%)
+
+# helper function for remove duplicated words in string
+define uniq =
+  $(eval seen :=)
+  $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
+  ${seen}
 endef
- 
-# 遍历Classes目录
-ALLFILES = $(call walk, $(LOCAL_PATH)/../../Classes)
- 
-FILE_LIST := hellocpp/main.cpp
-# 从所有文件中提取出所有.cpp和.c文件文件
-FILE_LIST += $(filter %.cpp %.c, $(ALLFILES))
 
-LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
+# Retrieve all directory recursively.
+MY_ALL_DIRS := $(dir $(foreach src_path,$(MY_FILES_PATH), $(call rwildcard,$(src_path),*/) ) )
+MY_ALL_DIRS := $(call uniq,$(MY_ALL_DIRS))
 
-#此句需要linux/unix的find命令支持，Window可以安装cygwin
-FILE_INCLUDES := $(shell find $(LOCAL_PATH)/../../Classes -type d)
+# All done, just tell NDK build system.
+LOCAL_SRC_FILES  := $(MY_SRC_LIST)
+LOCAL_C_INCLUDES := $(MY_ALL_DIRS)
 
-LOCAL_C_INCLUDES := $(FILE_INCLUDES)
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static
