@@ -24,7 +24,8 @@ You can read official [README.md](https://github.com/cocos2d/cocos2d-x/blob/v3/R
 
 ####Step 2: Adding and running from Eclipse
 
-![Example](https://lh3.googleusercontent.com/-SLBOu6e3QbE/UUOcOXYaGqI/AAAAAAAAsdo/tYBY2SylOSM/s288/cocos2d-x-eclipse-project-from-code.png) ![Import](https://lh5.googleusercontent.com/-XzC9Pn65USc/UUOcOTAwizI/AAAAAAAAsdk/4b6YM-oim9Y/s400/cocos2d-x-eclipse-import-project.png)
+![Example](https://lh3.googleusercontent.com/-SLBOu6e3QbE/UUOcOXYaGqI/AAAAAAAAsdo/tYBY2SylOSM/s288/cocos2d-x-eclipse-project-from-code.png) 
+![Import](https://lh5.googleusercontent.com/-XzC9Pn65USc/UUOcOTAwizI/AAAAAAAAsdk/4b6YM-oim9Y/s400/cocos2d-x-eclipse-import-project.png)
 
 1. File->New->Project->Android Project From Existing Code
 2. **Browse** to your project directory and Add the project 
@@ -45,7 +46,7 @@ That's all !!!
    
 3. Auto find cpp files
 
-    `Android.mk can auto find cpp files at Classes directory,(Windows can install cygwin to support find function)`
+    `Android.mk can auto find cpp files from Classes and jni directory.`
 
 4. Add libcocos2d as a link directory
     
