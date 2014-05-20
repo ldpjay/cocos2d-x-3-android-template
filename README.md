@@ -33,6 +33,11 @@ You can read official [README.md](https://github.com/cocos2d/cocos2d-x/blob/v3/R
 
 That's all !!! 
 
+###Ant Build
+
+You need download ant at first 
+
+`ant -file build.xml -Dsdk.dir=/Your/Android/sdk/path clean debug`
 
 ### Features:
 
@@ -54,9 +59,8 @@ That's all !!!
     
 ### To do List
 
-1. Ant support
-2. Android Proguard support
-3. NDK debug support
+1. Android Proguard support
+2. NDK debug support
 
 You can fork this template at [My Github](https://github.com/myourys/cocos2d-x-3-android-template).
 	
