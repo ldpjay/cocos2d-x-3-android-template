@@ -20,11 +20,12 @@ You can read official [README.md](https://github.com/cocos2d/cocos2d-x/blob/v3/R
 * Eclipse->Preferences->C/C++->Build->**Environment**.
 * Click **Add** button and add a new variable `NDK_ROOT` pointing to the root NDK directory.
 	![Example](https://lh3.googleusercontent.com/-AVcY8IAT0_g/UUOYltoRobI/AAAAAAAAsdM/22D2J9u3sig/s400/cocos2d-x-eclipse-ndk.png)
-* Only for Windows: Add new variables **CYGWIN** with value `nodosfilewarning` and **SHELLOPTS** with value `igncr`
+	
 
 ####Step 2: Adding and running from Eclipse
 
 ![Example](https://lh3.googleusercontent.com/-SLBOu6e3QbE/UUOcOXYaGqI/AAAAAAAAsdo/tYBY2SylOSM/s288/cocos2d-x-eclipse-project-from-code.png) 
+
 ![Import](https://lh5.googleusercontent.com/-XzC9Pn65USc/UUOcOTAwizI/AAAAAAAAsdk/4b6YM-oim9Y/s400/cocos2d-x-eclipse-import-project.png)
 
 1. File->New->Project->Android Project From Existing Code
@@ -35,7 +36,10 @@ That's all !!!
 
 ###Ant Build
 
-You need download ant at first 
+You need download ant at first,also confim you have install correct android sdk version where target set in `project.properties`.
+
+    1. ./proj.android/project.properties  target
+    2. ./cocos2d/cocos2d/cocos/2d/platform/android/java/project.properties target
 
 `ant -file build.xml -Dsdk.dir=/Your/Android/sdk/path clean debug`
 
